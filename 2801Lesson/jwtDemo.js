@@ -6,7 +6,7 @@ const app = express()
 const port = 3000
 
 // FOR DEMO ONLY, DO NOT USE IN PRODUCTION  
-const MYSECRET = 'mysecret';
+const MYSECRETJWTKEY = 'mysecret';
 
 passport.use(new BasicStrategy(function(username, password, done) {
     // we can use the username and password to search our user data
