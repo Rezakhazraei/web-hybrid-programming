@@ -156,6 +156,3 @@ app.post('/posts',
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
-
-// "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM4NzE0MTAyLCJleHAiOjE3MzkzMTg5MDJ9.fR4Ge-fOLCnU9AsD9IGrLsCNWNCmsN_k2WOIGLVbZbk"
-// "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzM4NzE0MTAyLCJleHAiOjE3Mzg3MTUwMDJ9.opTrkcwQTxsRUHlgBM4hxLrZ4ZpizSCQnO2FdL841cI"
