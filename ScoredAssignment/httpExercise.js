@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
 // FOR DEMO ONLY, DO NOT USE IN PRODUCTION  
 const MYSECRETJWTKEY = 'mysecret';
 // we use the refresh secret to generate a new token for extending the session
@@ -100,7 +102,7 @@ app.post('/signin',
 
 // The refresh token route, that generates a new access token
 app.post('/refresh', (req,res) => {
-    const refreshToken = req.body;
+    const {refreshToken} = req.body;
     if(!refreshToken || !refreshTokens.includes(refreshToken)) {
         return res.status(403).json({ message: 'Invalid Refresh Token' });
     }
@@ -119,9 +121,10 @@ app.post('/refresh', (req,res) => {
 
 // Logout route, that removes the refresh token from the storage
 app.post('/logout', (req, res) => {
-    const refreshToken = req.body;
+    let refreshTokens = [];
+    const {refreshToken} = req.body;
     refreshTokens = refreshTokens.filter(token => token !== refreshToken);
-    res.status(204).send();
+    res.status(204).send({ message: 'Logged out successfully' });
 })
 
 app.get('/protectedWithJwt', 
@@ -144,7 +147,7 @@ app.post('/posts',
     passport.authenticate('jwt', { session: false }),
     isAdmin,
     (req, res) => {
-    const { message } = req.body;
+    const {message} = req.body;
     if(message) {
         posts.push(message);
         res.json({ message: 'Post added successfully' });
